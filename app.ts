@@ -85,7 +85,7 @@ class Euler {
 
   render(t?: number) {
     this.time = t || 0;
-    const o = (1 + Math.sin(this.time * 0.0001)) * 2;
+    const o = 1 + Math.sin(this.time * 0.0001);
     this.canvasCtx.reset();
     this.canvasCtx.translate(innerWidth / 2, innerHeight / 2);
     for (let i = 1; i <= this.steps; i++) {
