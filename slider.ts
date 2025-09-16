@@ -5,11 +5,10 @@ class Slider {
   initialValue: number;
   container: Element;
   slider: HTMLInputElement;
+  label: string;
   cb: (value: number) => void;
 
-  constructor(minValue, maxValue, step, initialValue, cb) {
-    console.log(minValue, maxValue, step, initialValue);
-
+  constructor(label, minValue, maxValue, step, initialValue, cb) {
     this.minValue = minValue;
     this.maxValue = maxValue;
     this.initialValue = initialValue;
@@ -18,6 +17,7 @@ class Slider {
     this.appendSlider();
     this.sliderEvents();
     this.cb = cb;
+    this.label = label;
   }
 
   appendSlider() {

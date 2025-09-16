@@ -1,21 +1,12 @@
 import Slider from "./slider";
+import * as dat from "dat.gui";
 
 const PI = Math.PI;
-const E = Math.E;
 
 function fact(num) {
   var rval = 1;
   for (var i = 2; i <= num; i++) rval = rval * i;
   return rval;
-}
-
-class P {
-  x: number;
-  y: number;
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-  }
 }
 
 class Euler {
@@ -44,10 +35,21 @@ class Euler {
     this.y = 10 * PI;
     this.steps = 2000;
     this.iterations = 50;
-    new Slider(0, 20 * PI, 0.01, this.x, (v) => (this.x = v));
-    new Slider(0, 20 * PI, 0.01, this.y, (v) => (this.y = v));
-    new Slider(1, 2000, 1, this.steps, (v) => (this.steps = v));
-    new Slider(0, 100, 1, this.iterations, (v) => (this.iterations = v));
+    const gui = new dat.GUI();
+    const folder = gui.addFolder("paralaxAmount");
+    folder.open();
+    folder
+      .add({ x: this.x }, "x", 0, 20 * PI, 0.01)
+      .onChange((v) => (this.x = v));
+    folder
+      .add({ y: this.y }, "y", 0, 20 * PI, 0.01)
+      .onChange((v) => (this.y = v));
+    folder
+      .add({ steps: this.steps }, "steps", 1, 2000, 1)
+      .onChange((v) => (this.steps = v));
+    folder
+      .add({ iterations: this.iterations }, "iterations", 1, 100, 1)
+      .onChange((v) => (this.iterations = v));
     this.render();
   }
 
@@ -77,9 +79,8 @@ class Euler {
     this.drawPoint(
       xr,
       yi,
-      `rgba(${255 * colorMultipler}, ${255 * (1 - colorMultipler)}, ${
-        255 * (1 - colorMultipler)
-      }, 1)`
+      `rgba(${255 * colorMultipler}, ${255 * (1 - colorMultipler)}, ${255 * (1 - colorMultipler)
+      }, 1)`,
     );
   }
 
@@ -93,7 +94,7 @@ class Euler {
         (this.x * i) / this.steps / o,
         (this.y * i) / this.steps,
         this.iterations,
-        (i / this.steps) * o
+        (i / this.steps) * o,
       );
     }
 
