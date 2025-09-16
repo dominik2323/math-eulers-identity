@@ -19,6 +19,7 @@ class Euler {
   steps: number;
   iterations: number;
   time: number;
+  timeMultiplier: number;
 
   constructor(conainerId) {
     this.container = document.getElementById(conainerId)!;
@@ -35,8 +36,10 @@ class Euler {
     this.y = 10 * PI;
     this.steps = 2000;
     this.iterations = 50;
+    this.timeMultiplier = 1;
+
     const gui = new dat.GUI();
-    const folder = gui.addFolder("paralaxAmount");
+    const folder = gui.addFolder("Euler's identity settings");
     folder.open();
     folder
       .add({ x: this.x }, "x", 0, 20 * PI, 0.01)
@@ -50,6 +53,15 @@ class Euler {
     folder
       .add({ iterations: this.iterations }, "iterations", 1, 100, 1)
       .onChange((v) => (this.iterations = v));
+    folder
+      .add(
+        { timeMultiplier: this.timeMultiplier },
+        "timeMultiplier",
+        1,
+        1.5,
+        0.01,
+      )
+      .onChange((v) => (this.timeMultiplier = v));
     this.render();
   }
 
@@ -86,6 +98,7 @@ class Euler {
 
   render(t?: number) {
     this.time = t || 0;
+    this.time *= this.timeMultiplier;
     const o = 1 + Math.sin(this.time * 0.0001);
     this.canvasCtx.reset();
     this.canvasCtx.translate(innerWidth / 2, innerHeight / 2);
