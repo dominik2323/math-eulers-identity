@@ -1,0 +1,19 @@
+{
+  "name": "eulers-identity",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "parcel index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/dat.gui": "^0.7.13",
+    "parcel": "^2.15.4"
+  },
+  "dependencies": {
+    "-": "^0.0.1",
+    "dat.gui": "^0.7.9"
+  }
+}
