@@ -36,7 +36,7 @@ class Euler {
     this.y = 10 * PI;
     this.steps = 2000;
     this.iterations = 50;
-    this.timeMultiplier = 1.0;
+    this.timeMultiplier = 0.5;
 
     const gui = new dat.GUI();
     const folder = gui.addFolder("Euler's identity settings");
@@ -57,7 +57,7 @@ class Euler {
       .add(
         { timeMultiplier: this.timeMultiplier },
         "timeMultiplier",
-        1.0,
+        0.1,
         2.0,
         0.01,
       )
