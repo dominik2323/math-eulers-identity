@@ -57,8 +57,8 @@ class Euler {
       .add(
         { timeMultiplier: this.timeMultiplier },
         "timeMultiplier",
-        1,
-        1.5,
+        1.2,
+        2.0,
         0.01,
       )
       .onChange((v) => (this.timeMultiplier = v));
@@ -91,7 +91,8 @@ class Euler {
     this.drawPoint(
       xr,
       yi,
-      `rgba(${255 * colorMultipler}, ${255 * (1 - colorMultipler)}, ${255 * (1 - colorMultipler)
+      `rgba(${255 * colorMultipler}, ${255 * (1 - colorMultipler)}, ${
+        255 * (1 - colorMultipler)
       }, 1)`,
     );
   }
