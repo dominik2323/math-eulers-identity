@@ -36,7 +36,7 @@ class Euler {
     this.y = 10 * PI;
     this.steps = 2000;
     this.iterations = 50;
-    this.timeMultiplier = 1.2;
+    this.timeMultiplier = 1.0;
 
     const gui = new dat.GUI();
     const folder = gui.addFolder("Euler's identity settings");
@@ -100,7 +100,7 @@ class Euler {
   render(t?: number) {
     this.time = t || 0;
     this.time *= this.timeMultiplier;
-    const o = 1 + Math.sin(this.time * 0.0001);
+    const o = 0 + Math.sin(this.time * 0.0001);
     this.canvasCtx.reset();
     this.canvasCtx.translate(innerWidth / 2, innerHeight / 2);
     for (let i = 1; i <= this.steps; i++) {
